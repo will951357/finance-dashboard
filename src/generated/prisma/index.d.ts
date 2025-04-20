@@ -3274,6 +3274,7 @@ export namespace Prisma {
     amount: number | null
     typeId: number | null
     categoryId: number | null
+    date: Date | null
     createdAt: Date | null
   }
 
@@ -3283,6 +3284,7 @@ export namespace Prisma {
     amount: number | null
     typeId: number | null
     categoryId: number | null
+    date: Date | null
     createdAt: Date | null
   }
 
@@ -3292,6 +3294,7 @@ export namespace Prisma {
     amount: number
     typeId: number
     categoryId: number
+    date: number
     createdAt: number
     _all: number
   }
@@ -3317,6 +3320,7 @@ export namespace Prisma {
     amount?: true
     typeId?: true
     categoryId?: true
+    date?: true
     createdAt?: true
   }
 
@@ -3326,6 +3330,7 @@ export namespace Prisma {
     amount?: true
     typeId?: true
     categoryId?: true
+    date?: true
     createdAt?: true
   }
 
@@ -3335,6 +3340,7 @@ export namespace Prisma {
     amount?: true
     typeId?: true
     categoryId?: true
+    date?: true
     createdAt?: true
     _all?: true
   }
@@ -3431,6 +3437,7 @@ export namespace Prisma {
     amount: number
     typeId: number
     categoryId: number
+    date: Date
     createdAt: Date
     _count: TransactionCountAggregateOutputType | null
     _avg: TransactionAvgAggregateOutputType | null
@@ -3459,6 +3466,7 @@ export namespace Prisma {
     amount?: boolean
     typeId?: boolean
     categoryId?: boolean
+    date?: boolean
     createdAt?: boolean
     type?: boolean | TransactionTypeDefaultArgs<ExtArgs>
     category?: boolean | CategoryDefaultArgs<ExtArgs>
@@ -3470,6 +3478,7 @@ export namespace Prisma {
     amount?: boolean
     typeId?: boolean
     categoryId?: boolean
+    date?: boolean
     createdAt?: boolean
     type?: boolean | TransactionTypeDefaultArgs<ExtArgs>
     category?: boolean | CategoryDefaultArgs<ExtArgs>
@@ -3481,6 +3490,7 @@ export namespace Prisma {
     amount?: boolean
     typeId?: boolean
     categoryId?: boolean
+    date?: boolean
     createdAt?: boolean
     type?: boolean | TransactionTypeDefaultArgs<ExtArgs>
     category?: boolean | CategoryDefaultArgs<ExtArgs>
@@ -3492,10 +3502,11 @@ export namespace Prisma {
     amount?: boolean
     typeId?: boolean
     categoryId?: boolean
+    date?: boolean
     createdAt?: boolean
   }
 
-  export type TransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "amount" | "typeId" | "categoryId" | "createdAt", ExtArgs["result"]["transaction"]>
+  export type TransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "amount" | "typeId" | "categoryId" | "date" | "createdAt", ExtArgs["result"]["transaction"]>
   export type TransactionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     type?: boolean | TransactionTypeDefaultArgs<ExtArgs>
     category?: boolean | CategoryDefaultArgs<ExtArgs>
@@ -3521,6 +3532,7 @@ export namespace Prisma {
       amount: number
       typeId: number
       categoryId: number
+      date: Date
       createdAt: Date
     }, ExtArgs["result"]["transaction"]>
     composites: {}
@@ -3952,6 +3964,7 @@ export namespace Prisma {
     readonly amount: FieldRef<"Transaction", 'Float'>
     readonly typeId: FieldRef<"Transaction", 'Int'>
     readonly categoryId: FieldRef<"Transaction", 'Int'>
+    readonly date: FieldRef<"Transaction", 'DateTime'>
     readonly createdAt: FieldRef<"Transaction", 'DateTime'>
   }
     
@@ -4403,6 +4416,7 @@ export namespace Prisma {
     amount: 'amount',
     typeId: 'typeId',
     categoryId: 'categoryId',
+    date: 'date',
     createdAt: 'createdAt'
   };
 
@@ -4582,6 +4596,7 @@ export namespace Prisma {
     amount?: FloatFilter<"Transaction"> | number
     typeId?: IntFilter<"Transaction"> | number
     categoryId?: IntFilter<"Transaction"> | number
+    date?: DateTimeFilter<"Transaction"> | Date | string
     createdAt?: DateTimeFilter<"Transaction"> | Date | string
     type?: XOR<TransactionTypeScalarRelationFilter, TransactionTypeWhereInput>
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
@@ -4593,6 +4608,7 @@ export namespace Prisma {
     amount?: SortOrder
     typeId?: SortOrder
     categoryId?: SortOrder
+    date?: SortOrder
     createdAt?: SortOrder
     type?: TransactionTypeOrderByWithRelationInput
     category?: CategoryOrderByWithRelationInput
@@ -4607,6 +4623,7 @@ export namespace Prisma {
     amount?: FloatFilter<"Transaction"> | number
     typeId?: IntFilter<"Transaction"> | number
     categoryId?: IntFilter<"Transaction"> | number
+    date?: DateTimeFilter<"Transaction"> | Date | string
     createdAt?: DateTimeFilter<"Transaction"> | Date | string
     type?: XOR<TransactionTypeScalarRelationFilter, TransactionTypeWhereInput>
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
@@ -4618,6 +4635,7 @@ export namespace Prisma {
     amount?: SortOrder
     typeId?: SortOrder
     categoryId?: SortOrder
+    date?: SortOrder
     createdAt?: SortOrder
     _count?: TransactionCountOrderByAggregateInput
     _avg?: TransactionAvgOrderByAggregateInput
@@ -4635,6 +4653,7 @@ export namespace Prisma {
     amount?: FloatWithAggregatesFilter<"Transaction"> | number
     typeId?: IntWithAggregatesFilter<"Transaction"> | number
     categoryId?: IntWithAggregatesFilter<"Transaction"> | number
+    date?: DateTimeWithAggregatesFilter<"Transaction"> | Date | string
     createdAt?: DateTimeWithAggregatesFilter<"Transaction"> | Date | string
   }
 
@@ -4713,6 +4732,7 @@ export namespace Prisma {
   export type TransactionCreateInput = {
     title: string
     amount: number
+    date?: Date | string
     createdAt?: Date | string
     type: TransactionTypeCreateNestedOneWithoutTransactionsInput
     category: CategoryCreateNestedOneWithoutTransactionsInput
@@ -4724,12 +4744,14 @@ export namespace Prisma {
     amount: number
     typeId: number
     categoryId: number
+    date?: Date | string
     createdAt?: Date | string
   }
 
   export type TransactionUpdateInput = {
     title?: StringFieldUpdateOperationsInput | string
     amount?: FloatFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: TransactionTypeUpdateOneRequiredWithoutTransactionsNestedInput
     category?: CategoryUpdateOneRequiredWithoutTransactionsNestedInput
@@ -4741,6 +4763,7 @@ export namespace Prisma {
     amount?: FloatFieldUpdateOperationsInput | number
     typeId?: IntFieldUpdateOperationsInput | number
     categoryId?: IntFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -4750,12 +4773,14 @@ export namespace Prisma {
     amount: number
     typeId: number
     categoryId: number
+    date?: Date | string
     createdAt?: Date | string
   }
 
   export type TransactionUpdateManyMutationInput = {
     title?: StringFieldUpdateOperationsInput | string
     amount?: FloatFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -4765,6 +4790,7 @@ export namespace Prisma {
     amount?: FloatFieldUpdateOperationsInput | number
     typeId?: IntFieldUpdateOperationsInput | number
     categoryId?: IntFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -4922,6 +4948,7 @@ export namespace Prisma {
     amount?: SortOrder
     typeId?: SortOrder
     categoryId?: SortOrder
+    date?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -4938,6 +4965,7 @@ export namespace Prisma {
     amount?: SortOrder
     typeId?: SortOrder
     categoryId?: SortOrder
+    date?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -4947,6 +4975,7 @@ export namespace Prisma {
     amount?: SortOrder
     typeId?: SortOrder
     categoryId?: SortOrder
+    date?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -5236,6 +5265,7 @@ export namespace Prisma {
   export type TransactionCreateWithoutCategoryInput = {
     title: string
     amount: number
+    date?: Date | string
     createdAt?: Date | string
     type: TransactionTypeCreateNestedOneWithoutTransactionsInput
   }
@@ -5245,6 +5275,7 @@ export namespace Prisma {
     title: string
     amount: number
     typeId: number
+    date?: Date | string
     createdAt?: Date | string
   }
 
@@ -5283,12 +5314,14 @@ export namespace Prisma {
     amount?: FloatFilter<"Transaction"> | number
     typeId?: IntFilter<"Transaction"> | number
     categoryId?: IntFilter<"Transaction"> | number
+    date?: DateTimeFilter<"Transaction"> | Date | string
     createdAt?: DateTimeFilter<"Transaction"> | Date | string
   }
 
   export type TransactionCreateWithoutTypeInput = {
     title: string
     amount: number
+    date?: Date | string
     createdAt?: Date | string
     category: CategoryCreateNestedOneWithoutTransactionsInput
   }
@@ -5298,6 +5331,7 @@ export namespace Prisma {
     title: string
     amount: number
     categoryId: number
+    date?: Date | string
     createdAt?: Date | string
   }
 
@@ -5400,12 +5434,14 @@ export namespace Prisma {
     title: string
     amount: number
     typeId: number
+    date?: Date | string
     createdAt?: Date | string
   }
 
   export type TransactionUpdateWithoutCategoryInput = {
     title?: StringFieldUpdateOperationsInput | string
     amount?: FloatFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: TransactionTypeUpdateOneRequiredWithoutTransactionsNestedInput
   }
@@ -5415,6 +5451,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     amount?: FloatFieldUpdateOperationsInput | number
     typeId?: IntFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -5423,6 +5460,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     amount?: FloatFieldUpdateOperationsInput | number
     typeId?: IntFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -5431,12 +5469,14 @@ export namespace Prisma {
     title: string
     amount: number
     categoryId: number
+    date?: Date | string
     createdAt?: Date | string
   }
 
   export type TransactionUpdateWithoutTypeInput = {
     title?: StringFieldUpdateOperationsInput | string
     amount?: FloatFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: CategoryUpdateOneRequiredWithoutTransactionsNestedInput
   }
@@ -5446,6 +5486,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     amount?: FloatFieldUpdateOperationsInput | number
     categoryId?: IntFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -5454,6 +5495,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     amount?: FloatFieldUpdateOperationsInput | number
     categoryId?: IntFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

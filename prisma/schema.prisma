@@ -35,5 +35,6 @@ model Transaction {
   typeId      Int
   category    Category        @relation(fields: [categoryId], references: [id])
   categoryId  Int
+  date        DateTime        @default(now())  // Novo campo
   createdAt   DateTime        @default(now())
 }
